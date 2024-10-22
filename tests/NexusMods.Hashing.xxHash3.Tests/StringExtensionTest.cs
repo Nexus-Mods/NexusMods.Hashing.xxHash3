@@ -1,4 +1,4 @@
-namespace NexusMods.Hashing.xxHash64.Tests;
+namespace NexusMods.Hashing.xxHash3.Tests;
 
 public class StringExtensionTest
 {

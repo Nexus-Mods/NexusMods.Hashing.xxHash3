@@ -2,10 +2,12 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <EnableXunitDependencyInjectionDefaultTestFrameworkAttribute>false</EnableXunitDependencyInjectionDefaultTestFrameworkAttribute>
+        <LangVersion>13</LangVersion>
+        <RootNamespace>NexusMods.Hashing.xxHash3.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\NexusMods.Hashing.xxHash64\NexusMods.Hashing.xxHash64.csproj" />
+        <ProjectReference Include="..\..\src\NexusMods.Hashing.xxHash3\NexusMods.Hashing.xxHash3.csproj" />
     </ItemGroup>
 
     <ItemGroup>

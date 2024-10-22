@@ -1,9 +1,10 @@
 using System;
+using System.IO.Hashing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 
-namespace NexusMods.Hashing.xxHash64;
+namespace NexusMods.Hashing.xxHash3;
 
 /// <summary>
 /// Extensions related to <see cref="Span{T}"/>(s) and their heap sibling <see cref="Memory{T}"/>.
@@ -12,25 +13,25 @@ namespace NexusMods.Hashing.xxHash64;
 public static class SpanExtensions
 {
     /// <summary>
-    /// Hashes the given <see cref="Span{T}"/> of bytes using xxHash64.
+    /// Hashes the given <see cref="Span{T}"/> of bytes using xxHash3.
     /// </summary>
     /// <param name="data">The data to hash.</param>
     /// <returns>Hash for the given data.</returns>
-    public static Hash XxHash64(this Span<byte> data) => XxHash64((ReadOnlySpan<byte>)data);
+    public static Hash xxHash3(this Span<byte> data) => xxHash3((ReadOnlySpan<byte>)data);
 
     /// <summary>
-    /// Hashes the given <see cref="Span{T}"/> of bytes using xxHash64.
+    /// Hashes the given <see cref="Span{T}"/> of bytes using xxHash3.
     /// </summary>
     /// <param name="data">The data to hash.</param>
     /// <returns>Hash for the given data.</returns>
-    public static Hash XxHash64(this ReadOnlySpan<byte> data) => Hash.From(XxHash64Algorithm.HashBytes(data));
+    public static Hash xxHash3(this ReadOnlySpan<byte> data) => Hash.From(XxHash3.HashToUInt64(data));
 
     /// <summary>
-    /// Hashes the given <see cref="Memory{T}"/> of bytes using xxHash64.
+    /// Hashes the given <see cref="Memory{T}"/> of bytes using xxHash3.
     /// </summary>
     /// <param name="data">The data to hash.</param>
     /// <returns>Hash for the given data.</returns>
-    public static Hash XxHash64(this Memory<byte> data) => XxHash64(data.Span);
+    public static Hash xxHash3(this Memory<byte> data) => xxHash3(data.Span);
 
     /// <summary>
     /// Reads a <see cref="ulong"/> from the given <see cref="ReadOnlySpan{T}"/> of bytes,

@@ -1,7 +1,7 @@
 using NexusMods.Paths;
 using NexusMods.Paths.Extensions;
 
-namespace NexusMods.Hashing.xxHash64.Paths.Tests;
+namespace NexusMods.Hashing.xxHash3.Paths.Tests;
 
 public class HashRelativePathTests
 {

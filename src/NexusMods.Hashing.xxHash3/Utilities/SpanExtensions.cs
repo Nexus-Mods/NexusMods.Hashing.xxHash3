@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace NexusMods.Hashing.xxHash64.Utilities;
+namespace NexusMods.Hashing.xxHash3.Utilities;
 
 // ReSharper disable MemberCanBePrivate.Global
 

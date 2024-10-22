@@ -1,6 +1,8 @@
 using System.Buffers.Binary;
+using System.IO.Hashing;
+using NexusMods.Paths;
 
-namespace NexusMods.Hashing.xxHash64.Tests;
+namespace NexusMods.Hashing.xxHash3.Paths.Tests;
 
 /// <summary>
 /// Contains various utility functions.
@@ -14,7 +16,7 @@ public static class Utility
     /// <returns></returns>
     internal static Hash MSHash(byte[] data)
     {
-        var bytes = System.IO.Hashing.XxHash64.Hash(data);
+        var bytes = XxHash3.Hash(data);
         return Hash.From(BinaryPrimitives.ReadUInt64BigEndian(bytes));
     }
 
@@ -22,19 +24,9 @@ public static class Utility
     /// Asynchronously hashes a given file.
     /// </summary>
     /// <param name="path">Path to the file to be hashed.</param>
-    public static async Task<Hash> MSXxHash64(this string path)
+    public static async Task<Hash> MSxxHash3(this AbsolutePath path)
     {
-        var data = await File.ReadAllBytesAsync(path);
+        var data = await path.ReadAllBytesAsync();
         return MSHash(data);
-    }
-
-    /// <summary>
-    /// Asynchronously hashes a given file.
-    /// </summary>
-    /// <param name="path">Path to the file to be hashed.</param>
-    public static async Task<Hash> XxHash64Async(this string path)
-    {
-        var data = await File.ReadAllBytesAsync(path);
-        return data.XxHash64();
     }
 }

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 #endif
 
-namespace NexusMods.Hashing.xxHash64.Utilities;
+namespace NexusMods.Hashing.xxHash3.Utilities;
 
 /// <summary>
 ///     Internal extension methods tied to arrays.

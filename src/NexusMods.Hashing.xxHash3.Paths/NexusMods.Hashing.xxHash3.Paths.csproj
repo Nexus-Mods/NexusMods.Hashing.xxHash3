@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Title>NexusMods.Paths Extensions for NexusMods' xxHash3 Library</Title>
+        <Description>Extension methods that combine NexusMods.Paths and NexusMods.Hashing.xxHash3.</Description>
+
+        <!-- Override NuGet.Build.props -->
+        <PackageProjectUrl>https://github.com/Nexus-Mods/NexusMods.Hashing.xxHash3</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Nexus-Mods/NexusMods.Hashing.xxHash3</RepositoryUrl>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+        <LangVersion>latest</LangVersion>
+        <RootNamespace>NexusMods.Hashing.xxHash3.Paths</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NexusMods.Paths" Version="0.9.5" />
+        <PackageReference Include="TransparentValueObjects" Version="1.0.1" />
+        <PackageReference Update="JetBrains.Annotations" Version="2023.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\NexusMods.Hashing.xxHash3\NexusMods.Hashing.xxHash3.csproj" />
+    </ItemGroup>
+</Project>

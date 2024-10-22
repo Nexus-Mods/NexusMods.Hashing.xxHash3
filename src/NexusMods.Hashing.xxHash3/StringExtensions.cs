@@ -4,9 +4,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using JetBrains.Annotations;
-using NexusMods.Hashing.xxHash64.Utilities;
+using NexusMods.Hashing.xxHash3.Utilities;
 
-namespace NexusMods.Hashing.xxHash64;
+namespace NexusMods.Hashing.xxHash3;
 
 /// <summary>
 /// Hashing related extensions for strings that might come in handy down the road.
@@ -67,11 +67,11 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Returns the xxHash64 of the given string using UTF8 encoding.
+    /// Returns the xxHash3 of the given string using UTF8 encoding.
     /// </summary>
     /// <param name="text">The string to hash.</param>
     /// <returns>Hash of the given string.</returns>
-    public static Hash XxHash64AsUtf8(this string text)
+    public static Hash xxHash3AsUtf8(this string text)
     {
         // This is only used in tests right now.
         var utf8 = Encoding.UTF8;
@@ -83,13 +83,13 @@ public static class StringExtensions
             using var mem = MemoryPool<byte>.Shared.Rent(numBytes);
             var dataSpan = mem.Memory.Span[..numBytes];
             utf8.GetBytes(text.AsSpan(), dataSpan);
-            return dataSpan.XxHash64();
+            return dataSpan.xxHash3();
         }
         else
         {
             Span<byte> dataSpan = stackalloc byte[numBytes];
             utf8.GetBytes(text.AsSpan(), dataSpan);
-            return dataSpan.XxHash64();
+            return dataSpan.xxHash3();
         }
     }
 

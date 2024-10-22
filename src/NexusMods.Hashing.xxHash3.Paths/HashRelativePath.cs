@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using NexusMods.Paths;
 using NexusMods.Paths.Extensions;
 
-namespace NexusMods.Hashing.xxHash64.Paths;
+namespace NexusMods.Hashing.xxHash3.Paths;
 
 /// <summary>
 /// A tuple which contains the hash of the source archive a file has came from and its

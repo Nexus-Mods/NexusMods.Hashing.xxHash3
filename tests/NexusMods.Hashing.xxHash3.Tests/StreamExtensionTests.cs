@@ -1,4 +1,4 @@
-namespace NexusMods.Hashing.xxHash64.Tests;
+namespace NexusMods.Hashing.xxHash3.Tests;
 
 public class StreamExtensionTests
 {
@@ -15,7 +15,7 @@ public class StreamExtensionTests
     public async Task CanHashStreams()
     {
         var stream = new MemoryStream(_buffer);
-        var hashValue = await stream.XxHash64Async(CancellationToken.None);
+        var hashValue = await stream.xxHash3Async(CancellationToken.None);
 
         hashValue.Should().Be(Utility.MSHash(_buffer));
     }

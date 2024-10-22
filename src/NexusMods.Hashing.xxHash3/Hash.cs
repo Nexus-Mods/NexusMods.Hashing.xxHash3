@@ -3,7 +3,7 @@ using System.Buffers.Binary;
 using JetBrains.Annotations;
 using TransparentValueObjects;
 
-namespace NexusMods.Hashing.xxHash64;
+namespace NexusMods.Hashing.xxHash3;
 
 /// <summary>
 /// Named object for an individual hash.

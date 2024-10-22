@@ -1,9 +1,9 @@
-namespace NexusMods.Hashing.xxHash64.Tests;
+namespace NexusMods.Hashing.xxHash3.Tests;
 
 public class HashTests
 {
     private const string KnownString = "Something clever should go here";
-    private static readonly Hash KnownHash = Hash.FromHex("F4C92BE058F432D0");
+    private static readonly Hash KnownHash = Hash.FromHex("B3A2155CCD08F233");
 
     [Fact]
     public void CanConvertHashBetweenFormats()
@@ -41,7 +41,7 @@ public class HashTests
     [Fact]
     public void CanHashStrings()
     {
-        KnownString.XxHash64AsUtf8()
+        KnownString.xxHash3AsUtf8()
             .Should().Be(KnownHash);
     }
 
@@ -51,8 +51,8 @@ public class HashTests
         var file = Path.Combine(Environment.CurrentDirectory, $"tempFile_{nameof(CanHashFile)}_{Guid.NewGuid()}");
         await File.WriteAllTextAsync(file, KnownString);
 
-        (await file.XxHash64Async()).Should().Be(KnownHash);
-        (await file.MSXxHash64()).Should().Be(KnownHash); // sanity test against MSFT hasher.
+        (await file.MSxxHash3()).Should().Be(KnownHash); // sanity test against MSFT hasher.
+        (await file.xxHash3Async()).Should().Be(KnownHash);
     }
 
     [Fact]
@@ -62,8 +62,8 @@ public class HashTests
         var emptyArray = CreateTestArray();
 
         await File.WriteAllBytesAsync(file, emptyArray);
-        (await file.XxHash64Async()).Should().Be(Hash.FromULong(0x54AC7E8D1810EC9D));
-        (await file.MSXxHash64()).Should().Be(Hash.FromULong(0x54AC7E8D1810EC9D)); // sanity test against MSFT hasher.
+        (await file.MSxxHash3()).Should().Be(Hash.FromULong(0xABE1D1790E439680)); // sanity test against MSFT hasher.
+        (await file.xxHash3Async()).Should().Be(Hash.FromULong(0xABE1D1790E439680));
         File.Delete(file);
     }
 
@@ -75,12 +75,12 @@ public class HashTests
 
         await File.WriteAllBytesAsync(file, emptyArray);
         var ms = new MemoryStream();
-        var expectedHash = Hash.FromULong(0x54AC7E8D1810EC9D);
+        var expectedHash = Hash.FromULong(0xABE1D1790E439680);
 
         await using var stream = new FileStream(file, FileMode.Open, FileAccess.Read);
-        (await stream.XxHash64Async(reportFn: async m => await ms.WriteAsync(m))).Should().Be(expectedHash);
-        (await file.MSXxHash64()).Should().Be(expectedHash);
-        ms.ToArray().AsSpan().XxHash64().Should().Be(expectedHash);
+        (await stream.xxHash3Async(reportFn: async m => await ms.WriteAsync(m))).Should().Be(expectedHash);
+        (await file.MSxxHash3()).Should().Be(expectedHash);
+        ms.ToArray().AsSpan().xxHash3().Should().Be(expectedHash);
         await stream.DisposeAsync();
         File.Delete(file);
     }

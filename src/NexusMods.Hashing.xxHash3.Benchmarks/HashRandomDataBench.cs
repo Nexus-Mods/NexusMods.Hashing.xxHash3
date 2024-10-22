@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
 
-namespace NexusMods.Hashing.xxHash64.Benchmarks;
+namespace NexusMods.Hashing.xxHash3.Benchmarks;
 
 [MemoryDiagnoser, DisassemblyDiagnoser]
 public class HashRandomDataBench
@@ -23,13 +23,13 @@ public class HashRandomDataBench
     public int Size { get; set; }
 
     [Benchmark]
-    public ulong NexusHash() => XxHash64Algorithm.HashBytes(_data.AsSpan()[..Size]);
+    public ulong NexusHash() => XxHash3.HashToUInt64(_data.AsSpan()[..Size]);
 
     [Benchmark]
     public unsafe ulong ExtensionsHashingBench()
     {
         Span<byte> hash = stackalloc byte[sizeof(ulong)];
-        XxHash64.Hash(_data.AsSpan()[..Size], hash);
+        XxHash3.Hash(_data.AsSpan()[..Size], hash);
         return Unsafe.As<byte, ulong>(ref MemoryMarshal.GetReference(hash));
     }
 }

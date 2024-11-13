@@ -45,8 +45,6 @@ public static class StreamExtensions
         var running = true;
         while (running && !token.IsCancellationRequested)
         {
-            var totalRead = 0;
-
             var read = await inputStream.ReadAsync(buffer, token);
             if (read == 0)
                 break;

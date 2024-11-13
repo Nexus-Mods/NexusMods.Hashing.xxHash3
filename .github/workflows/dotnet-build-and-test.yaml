@@ -16,25 +16,5 @@ on:
 
 jobs:
   build-and-test:
-    name: Build and Test (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest, macos-13 ]
+    uses: Nexus-Mods/NexusMods.App.Meta/.github/workflows/dotnet-build-and-test-with-osx.yaml@main
 
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
-
-      - name: Print debug info
-        run: dotnet --info
-
-      - name: Install dependencies
-        run: dotnet restore ""
-
-      - name: Build
-        run: dotnet build "" --no-restore ""
-
-      - name: Test
-        run: dotnet test "" --no-restore --verbosity normal --filter "$Category!=Disabled" --logger "GitHubActions"

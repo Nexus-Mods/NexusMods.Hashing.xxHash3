@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$([MSBuild]::GetPathOfFileAbove('NuGet.Build.props', '$(MSBuildThisFileDirectory)../'))" />
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
         <Title>NexusMods.Paths Extensions for NexusMods' xxHash3 Library</Title>
         <Description>Extension methods that combine NexusMods.Paths and NexusMods.Hashing.xxHash3.</Description>
 
@@ -14,9 +13,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NexusMods.Paths" Version="0.9.5" />
-        <PackageReference Include="TransparentValueObjects" Version="1.0.1" />
-        <PackageReference Update="JetBrains.Annotations" Version="2023.3.0" />
+        <PackageReference Include="NexusMods.Paths" Version="0.12.0" />
+        <PackageReference Include="TransparentValueObjects" Version="1.0.2" />
+        <PackageReference Update="JetBrains.Annotations" Version="2024.3.0" />
+        <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -15,7 +15,8 @@
     <ItemGroup>
       <PackageReference Include="System.IO.Hashing" Version="9.0.0" />
       <PackageReference Include="System.Memory" Version="4.5.5" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-      <PackageReference Include="TransparentValueObjects" Version="1.0.2" />
+        <PackageReference Include="TransparentValueObjects" Version="1.1.0" PrivateAssets="all" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <PackageReference Include="TransparentValueObjects.Abstractions" Version="1.1.0" />
       <PackageReference Update="JetBrains.Annotations" Version="2024.3.0" />
     </ItemGroup>
     <Import Project="$([MSBuild]::GetPathOfFileAbove('NuGet.Build.props', '$(MSBuildThisFileDirectory)../'))" />

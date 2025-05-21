@@ -88,7 +88,7 @@ public class HashRelativePathConverter : JsonConverter<HashRelativePath>
         var hash = reader.GetUInt64();
         reader.Read();
 
-        var relativePath = reader.GetString()!.ToRelativePath();
+        RelativePath relativePath = reader.GetString()!;
         reader.Read();
 
         return new HashRelativePath(Hash.FromULong(hash), relativePath);

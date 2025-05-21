@@ -8,8 +8,8 @@ public class HashRelativePathTests
     [Fact]
     public void CanCreateAndCompareHashPaths()
     {
-        var a = new HashRelativePath((Hash)0xDEADBEEFDECAFBAD, "foo/bar.pex".ToRelativePath());
-        var b = new HashRelativePath((Hash)0x100000000000000F, "foo.pex".ToRelativePath());
+        var a = new HashRelativePath((Hash)0xDEADBEEFDECAFBAD, "foo/bar.pex");
+        var b = new HashRelativePath((Hash)0x100000000000000F, "foo.pex");
 
         a.Should().BeEquivalentTo(a);
         a.Should().BeRankedEquallyTo(a);
@@ -19,7 +19,7 @@ public class HashRelativePathTests
         (a != b).Should().BeTrue();
 
         a.Extension.Should().Be(new Extension(".pex"));
-        a.FileName.Should().Be("bar.pex".ToRelativePath());
+        a.FileName.Should().Be("bar.pex");
         a.GetHashCode().Should().Be(a.GetHashCode());
         b.GetHashCode().Should().NotBe(a.GetHashCode());
     }
@@ -27,8 +27,8 @@ public class HashRelativePathTests
     [Fact]
     public void CanConvertToString()
     {
-        var a = new HashRelativePath((Hash)0xDEADBEEFDECAFBAD, "foo/bar.pex".ToRelativePath());
-        var b = new HashRelativePath((Hash)0x100000000000000F, "foo.pex".ToRelativePath());
+        var a = new HashRelativePath((Hash)0xDEADBEEFDECAFBAD, "foo/bar.pex");
+        var b = new HashRelativePath((Hash)0x100000000000000F, "foo.pex");
 
         a.ToString().Should().Be("0xDEADBEEFDECAFBAD|foo/bar.pex");
         b.ToString().Should().Be("0x100000000000000F|foo.pex");
